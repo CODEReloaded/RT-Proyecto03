@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User name:</strong>
+  <%= @answer.user_name %>
+</p>
+
+<p>
+  <strong>Blood group:</strong>
+  <%= @answer.blood_group %>
+</p>
+
+<p>
+  <strong>Posts:</strong>
+  <%= @answer.posts %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @answer.email %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @answer.phone %>
+</p>
+
+<p>
+  <strong>Cellphone:</strong>
+  <%= @answer.cellphone %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @answer.message %>
+</p>
+
+<%= link_to 'Edit', edit_answer_path(@answer) %> |
+<%= link_to 'Back', answers_path %>

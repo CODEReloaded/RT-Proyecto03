@@ -1,0 +1,82 @@
+<div class="row">
+  <div class="col-sm-offset-1 col-md-offset-2 col-lg-offset-3  col-sm-10 col-md-8 col-lg-6">
+    <%= form_for(@post) do |f| %>
+      <% if @post.errors.any? %>
+        <div class="alert alert-warning" role="alert">
+          <h2><%= @post.errors.count %> error(es) evitaron que esta publicación se creara:</h2>
+
+          <ul>
+          <% @post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group row">
+        <label for="post_post_name" class="col-sm-4 form-control-label">Titulo *</label>
+        <div class="col-sm-8">
+          <%= f.text_field :post_name, class:"form-control" %>
+        </div>
+        <div class="col-sm-12">
+          <small class="text-muted">Da un titulo 'agradable' para que los otros usuarios lo vean.</small>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="post_user_name" class="col-sm-4 form-control-label">Nombre de Usuario</label>
+        <div class="col-sm-8">
+          <%= f.text_field :user_name, class:"form-control" %>
+        </div>
+        <div class="col-sm-12">
+          <small class="text-muted">Nombre para que sepan quien lo publico.</small>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="post_user_name" class="col-sm-4 form-control-label">
+          <small class="text-muted">Elige el tipo de sangre que requieres (puedes elegir más de uno).</small>
+        </label>
+        <div class="col-sm-8">
+          <select multiple="multiple" class="form-control">
+            <option>A+</option>
+            <option>A-</option>
+            <option>B+</option>
+            <option>B-</option>
+            <option>AB+</option>
+            <option>AB-</option>
+            <option>O+</option>
+            <option>O-</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="post_blood_type" class="col-sm-4 form-control-label">Tipo de Sangre *</label>
+        <div class="col-sm-8">
+          <%= f.text_field :blood_type, class:"form-control", :value => "O-" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="post_message" class="col-sm-4 form-control-label">Mensaje</label>
+        <div class="col-sm-8">
+          <%= f.text_area :message, class:"form-control" %>
+        </div>
+        <div class="col-sm-12">
+          <small class="text-muted">Da un mensaje descriptivo para que más donadores se interesen.</small>
+        </div>
+      </div>
+      <%= f.submit "Publicar ya!", class:"btn btn-primary col-sm-offset-5" %>
+    <% end %>
+
+  </div>
+</div>
+
+<script>
+$( "select" )
+  .change(function () {
+    var str = "";
+    $( "select option:selected" ).each(function() {
+      str += $( this ).text() + ", ";
+    });
+    $( "#post_blood_type" ).val( str );
+  })
+  .change();
+</script>
