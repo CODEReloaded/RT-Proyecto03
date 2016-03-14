@@ -47,9 +47,13 @@
 
       <div class="row">
         <div class="col-sm-offset-2 col-sm-8">
-          <p id="notice"><%= notice %></p>
+          <% if notice %>
+          <div class="alert alert-success" role="alert">
+            <%= notice %>
+          </div>
+          <% end %>
           <p>
-            <h2 style="text-align:center"><%= @post.post_name %></h2>
+            <h1 style="text-align:center"><%= @post.post_name %></h2>
           </p>
 
           <p>
@@ -73,9 +77,29 @@
       
       <div class="row">
         <div class="col-sm-offset-5 col-sm-2">
-          <%= link_to 'Responder', root_path, class:"btn btn-primary"%>
+          <%= link_to 'Responder', new_answer_path(@post.slug), class:"btn btn-primary"%>
         </div>
       </div>
+
+      
+      <div class="row">
+        <div class="col-sm-offset-1 col-sm-10">
+          <hr/>
+          <h2 style="text-align:center; margin-top:20px">Respuestas</h2>
+        </div>
+        <% @answers.each do |answer| %>
+        <div class="col-md-offset-3 col-sm-12 col-md-6">
+          <hr>
+          <h2 class="post-name"><%= answer.user_name %></h2>
+          <p><small class="text-muted">Fecha de respuesta <%= answer.created_at %>.</small></p>
+          <p>Grupo Sanguineo: <%= answer.blood_group %>.</p>
+          <p class="message"><%= answer.message %></p>
+          <p><%= button_to 'Ver respuesta completa »', answer_showd_path, :params => {:id => @post.slug,:answer_id => answer.id}, class:"btn btn-secondary"  %></p>
+          <p><%= link_to 'Ver respuesta completa »', answer, class:"btn btn-secondary" %></p>
+        </div>
+        <% end %>
+      </div>
+      
 
       <hr/>
 

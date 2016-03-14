@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :answers
   root "posts#index"
   devise_scope :posts do
     #get    "/iniciar_sesion"    => "users/sessions#new",         as: :new_user_session
@@ -11,7 +10,12 @@ Rails.application.routes.draw do
     get "/publicacion/:id/editar"       =>  "posts#edit",     as:  :edit_post
     post "/publicacion/nueva"           =>  "posts#create",   as:  :posts
 
+    get "publicacion/:id/respuesta/nueva" => "answers#new",   as:  :new_answer
+    post "publicacion/:id/respuesta/nueva"           =>  "answers#create",   as:  :answers
+    post "publicacion/:id/respuesta/"           =>  "answers#show",   as:  :answer_showd
+
   end
+  resources :answers
   resources :posts
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

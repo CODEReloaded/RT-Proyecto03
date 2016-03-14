@@ -4,6 +4,8 @@ class Post < ActiveRecord::Base
 
 	validates :post_name, :message, :blood_type, presence: true
 	validates :slug, uniqueness: true
+	has_many :answer, dependent: :destroy
+	accepts_nested_attributes_for :answer
 
 	def slug_candidates
 		[:post_name, [:post_name, :id_for_slug]]

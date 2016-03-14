@@ -11,6 +11,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.friendly.find(params[:id])
+    @answers = Answer.where(post_id: @post.id)
   end
 
   # GET /posts/new

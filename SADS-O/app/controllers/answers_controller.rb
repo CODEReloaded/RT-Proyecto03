@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_action :set_answer, only: [:show, :edit, :update, :destroy]
+  before_action :set_answer, only: [:edit, :update, :destroy]
 
   # GET /answers
   # GET /answers.json
@@ -10,11 +10,14 @@ class AnswersController < ApplicationController
   # GET /answers/1
   # GET /answers/1.json
   def show
+    @answer = Answer.find(params[:answer_id])
   end
 
   # GET /answers/new
   def new
+    @post = Post.friendly.find(params[:id])
     @answer = Answer.new
+    @answer.post_id = @post.id
   end
 
   # GET /answers/1/edit
@@ -24,11 +27,12 @@ class AnswersController < ApplicationController
   # POST /answers
   # POST /answers.json
   def create
+    @post = Post.friendly.find(answer_params[:post_id])
     @answer = Answer.new(answer_params)
-
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
+        format.html { redirect_to post_path(Post.find(answer_params[:post_id]).slug),
+                   notice: 'Respuesta Creada correctamente.' }
         format.json { render :show, status: :created, location: @answer }
       else
         format.html { render :new }
@@ -42,7 +46,8 @@ class AnswersController < ApplicationController
   def update
     respond_to do |format|
       if @answer.update(answer_params)
-        format.html { redirect_to @answer, notice: 'Answer was successfully updated.' }
+        format.html { redirect_to show_post_path(Post.find(answer_params[:post_id]).slug),
+                   notice: 'Respuesta Actualizada correctamente.' }
         format.json { render :show, status: :ok, location: @answer }
       else
         format.html { render :edit }
@@ -69,6 +74,6 @@ class AnswersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
-      params.require(:answer).permit(:user_name, :blood_group, :posts_id, :email, :phone, :cellphone, :message)
+      params.require(:answer).permit(:user_name, :blood_group, :post_id, :email, :phone, :cellphone, :message)
     end
 end

@@ -7,7 +7,7 @@ class CreateAnswers < ActiveRecord::Migration
       t.string :phone
       t.string :cellphone
       t.string :message
-      t.references :posts, index: true, foreign_key: true
+      t.references :post, index: true, foreign_key: true
 
       t.timestamps null: false
     end

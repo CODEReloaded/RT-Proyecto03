@@ -11,8 +11,8 @@
 </p>
 
 <p>
-  <strong>Posts:</strong>
-  <%= @answer.posts %>
+  <strong>Post:</strong>
+  <%= Post.find(@answer.post_id).slug %>
 </p>
 
 <p>
@@ -36,4 +36,4 @@
 </p>
 
 <%= link_to 'Edit', edit_answer_path(@answer) %> |
-<%= link_to 'Back', answers_path %>
+<%= link_to 'Back', show_post_path(Post.find(@answer.post_id).slug) %>
