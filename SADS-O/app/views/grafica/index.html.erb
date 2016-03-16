@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xml:lang="es" lang="es" 
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" >
+  <head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+          var datos = document.getElementById("areavals");
+          var areainfo = [];
+          areainfo.push(['Tipo de Sangre', 'Publicaciones', 'Respuestas']);
+          <% @blood_count.each do |blood| %>
+          areainfo.push(['<%=blood[0]%>', <%= blood[1] %>, <%= blood[2] %>]);
+          <% end %>
+        var data = google.visualization.arrayToDataTable([
+          ['Fecha', 'Total', 'Neto'],
+          ['2013',  1000,      400],
+          ['2014',  1170,      460],
+          ['2015',  660,       1120],
+          ['2016',  1030,      540]
+        ]);
+        
+        var data2 = google.visualization.arrayToDataTable(areainfo);
+        var options = {
+          title: 'Actividad',
+          hAxis: {title: 'Tipo de Sangre',  titleTextStyle: {color: '#333'}},
+          vAxis: {title: 'Cantidad', minValue: 0}
+        };
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        chart.draw(data2, options);
+        document.getElementById('png').outerHTML = '<a href="' + chart.getImageURI() + '">Version PNG</a>';
+      }      
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <ul class="pager">
+          <li><%= link_to '« Regresar', root_path %></li>
+          <li><a href=""><div id='png'></div></a></li>
+        </ul>
+      </nav>
+    </div>
+    <br/>
+    <!--Div that will hold the pie chart-->
+    <div id="chart_div" style="width: 1300px; height: 700px;margin-left:-40px"></div>
+     
+  </body>
+</html>

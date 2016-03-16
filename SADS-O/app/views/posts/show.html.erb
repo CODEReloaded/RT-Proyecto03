@@ -87,7 +87,7 @@
           <hr/>
           <h2 style="text-align:center; margin-top:20px">Respuestas</h2>
         </div>
-        <% @answers.each do |answer| %>
+        <% @post.answers.each do |answer| %>
         <div class="col-md-offset-3 col-sm-12 col-md-6">
           <hr>
           <h2 class="post-name"><%= answer.user_name %></h2>
@@ -95,7 +95,6 @@
           <p>Grupo Sanguineo: <%= answer.blood_group %>.</p>
           <p class="message"><%= answer.message %></p>
           <p><%= button_to 'Ver respuesta completa »', answer_showd_path, :params => {:id => @post.slug,:answer_id => answer.id}, class:"btn btn-secondary"  %></p>
-          <p><%= link_to 'Ver respuesta completa »', answer, class:"btn btn-secondary" %></p>
         </div>
         <% end %>
       </div>

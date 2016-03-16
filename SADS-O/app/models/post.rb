@@ -2,10 +2,10 @@ class Post < ActiveRecord::Base
 	extend FriendlyId
 	friendly_id :slug_candidates, use: :slugged
 
-	validates :post_name, :message, :blood_type, presence: true
+	validates :post_name, :blood_type, :message, presence: true
 	validates :slug, uniqueness: true
-	has_many :answer, dependent: :destroy
-	accepts_nested_attributes_for :answer
+	has_many :answers, dependent: :destroy
+	accepts_nested_attributes_for :answers
 
 	def slug_candidates
 		[:post_name, [:post_name, :id_for_slug]]

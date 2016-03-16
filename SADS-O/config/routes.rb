@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     post "publicacion/:id/respuesta/nueva"           =>  "answers#create",   as:  :answers
     post "publicacion/:id/respuesta/"           =>  "answers#show",   as:  :answer_showd
 
+    get "grafica"                 => "grafica#index", as: :grafica
+
   end
   resources :answers
   resources :posts
