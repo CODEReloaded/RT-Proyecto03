@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="es-MX">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SADS-Online</title>
+  </head>
+
+  <body>
+
+    <div class="container">
+      <nav class="navbar navbar-light ">
+        <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">&#9776;</button>
+        <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+          <a class="navbar-brand" href="#"><h2 class="text-muted">Sistema Administrador de Donaciones de Sangre</h2></a>
+          <ul class="nav navbar-nav pull-xs-right">
+            <li class="nav-item active">
+              <%= link_to 'Inicio', root_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Ingresa', new_member_session_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Registro', new_member_registration_path , class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Publica', new_post_path, class:"nav-link" %>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <hr/>
+
+      <div class="jumbotron">
+        <h1 class="display-3">Necesitas un donante?</h1>
+        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <p><%= link_to 'Publica', new_post_path, class:"btn btn-lg btn-success" %></p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-offset-1 col-lg-10">
+          <p id="notice"><%= notice %></p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-offset-3 col-sm-6" style="text-align:center;">
+          <h1>Todas las publicaciones</h1>
+          <hr/>
+        </div>
+      </div>
+
+      <div class="row">
+        <% @posts.each do |post| %>
+        <div class="col-sm-6 col-md-4" style="margin-top:20px;">
+          <hr class="post">
+          <h2 class="post-name"><%= post.post_name %></h2>
+          <p class="message"><%= post.message %></p>
+          <p><%= link_to 'Ver publicación »', show_post_path(post), class:"btn btn-secondary" %></p>
+        </div>
+        <% end %>
+      </div>
+
+      <hr/>
+
+      <footer class="footer">
+        <p>&copy; Company 2014</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  </body>
+</html>

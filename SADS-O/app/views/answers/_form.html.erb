@@ -1,0 +1,90 @@
+<div class="row">
+  <div class="col-sm-offset-1 col-md-offset-2 col-lg-offset-3  col-sm-10 col-md-8 col-lg-6">
+    <%= form_for(@answer) do |f| %>
+      <% if @answer.errors.any? %>
+        <div class="alert alert-warning" role="alert">
+          <h2><%= pluralize(@answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
+
+          <ul>
+          <% @answer.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group row">
+        <label for="answer_user_name" class="col-sm-4 form-control-label">Nombre *</label>
+        <div class="col-sm-8">
+          <%= f.text_field :user_name, class:"form-control" %>
+        </div>
+        <div class="col-sm-12">
+          <small class="text-muted">Nombre para que sepa con quién comunicarse .</small>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="answer_blood_group" class="col-sm-4 form-control-label">Grupo Sanguineo *</label>
+        <div class="col-sm-8">
+          <%= f.text_field :blood_group, class:"form-control" %>
+        </div>
+        <div class="col-sm-12">
+          <small class="text-muted">Grupo Sanguineo que puedes donar.</small>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="answer_post_id" class="col-sm-4 form-control-label">Post id *</label>
+        <div class="col-sm-8">
+          <%= f.text_field :post_id %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="answer_email" class="col-sm-4 form-control-label">Correo electronico *</label>
+        <div class="col-sm-8">
+          <%= f.text_field :email, class:"form-control" %>
+      </div>
+        <div class="col-sm-12">
+          <small class="text-muted">Correo electronico para que te puedan contactar.</small>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="answer_phone" class="col-sm-4 form-control-label">Telefono casa **</label>
+        <div class="col-sm-8">
+          <%= f.text_field :phone, class:"form-control" %>
+        </div>
+        <div class="col-sm-12">
+          <small class="text-muted">Telefono fijo donde te puedan contactar.</small>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="answer_cellphone" class="col-sm-4 form-control-label">Telefono celular **</label>
+        <div class="col-sm-8">
+          <%= f.text_field :cellphone, class:"form-control" %>
+        </div>
+      </div>  
+      <div class="form-group row">
+        <label for="answer_message" class="col-sm-4 form-control-label">Mensaje **</label>
+        <div class="col-sm-8">
+          <%= f.text_area :message, class:"form-control" %>
+        </div>
+        <div class="col-sm-12">
+          <small class="text-muted">Si hay alguna indicacion de cómo contactarte dejala aquí.</small>
+        </div>
+      </div>
+      <div class="actions">
+        <%= f.submit "Responder", class:"btn btn-primary col-sm-offset-5" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+$( "select" )
+  .change(function () {
+    var str = "";
+    $( "select option:selected" ).each(function() {
+      str += $( this ).text() + ", ";
+    });
+    $( "#post_blood_group" ).val( str );
+  })
+  .change();
+</script>

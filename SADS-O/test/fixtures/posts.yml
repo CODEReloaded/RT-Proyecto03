@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  post_name: MyString
+  user_name: MyString
+  blood_type: MyString
+  message: MyText
+  user_id: 1
+
+two:
+  post_name: MyString
+  user_name: MyString
+  blood_type: MyString
+  message: MyText
+  user_id: 1

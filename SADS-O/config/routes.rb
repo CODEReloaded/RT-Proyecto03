@@ -1,4 +1,27 @@
 Rails.application.routes.draw do
+  devise_for :members
+  #devise_for :usuarios
+  #get "/registro"  =>  "usuarios#new",  as:  :registration_path
+
+  root "posts#index"
+  devise_scope :posts do
+    #get    "/iniciar_sesion"    => "login#log",         as: :new_user_session
+    #post   "/iniciar_sesion"    => "users/sessions#create",      as: :user_session
+    #delete "/cerrar_sesion"     => "users/sessions#destroy",     as: :destroy_user_session
+
+    get "/publicacion/nueva"            =>  "posts#new",      as:  :new_post
+    get "/publicacion/:id"              =>  "posts#show",     as:  :show_post
+    get "/publicacion/:id/editar"       =>  "posts#edit",     as:  :edit_post
+    post "/publicacion/nueva"           =>  "posts#create",   as:  :posts
+
+    get "publicacion/:id/respuesta/nueva" => "answers#new",   as:  :new_answer
+    post "publicacion/:id/respuesta/nueva"           =>  "answers#create",   as:  :answers
+    post "publicacion/:id/respuesta/"           =>  "answers#show",   as:  :answer_showd
+
+  end
+  resources :answers
+  resources :posts
+  resources :usuarios
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
