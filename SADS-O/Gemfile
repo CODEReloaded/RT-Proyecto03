@@ -43,7 +43,6 @@ gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'validates_formatting_of'
 gem 'binding_of_caller'
 gem 'delayed_job_active_record'
-gem 'simple_form'
 gem 'devise', github: 'plataformatec/devise'
 gem 'devise-i18n'
 gem 'rails-i18n', '~> 4.0.0' # For 4.0.x

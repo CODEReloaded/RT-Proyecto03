@@ -4,6 +4,9 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+    if current_user
+      redirect_to user_path
+    end
     @posts = Post.all
   end
 
@@ -28,7 +31,9 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-
+    if current_user
+      @post.user_id = current_user.id
+    end
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Tu publicación fue creada con exito.' }

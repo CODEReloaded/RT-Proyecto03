@@ -2,13 +2,17 @@ es-MX:
   activerecord:
     attributes:
       post:
-        post_name: "Titulo"
-        blood_type: "Grupo Sanguineo"
-        message: "Mensaje"
+        post_name: Titulo
+        blood_type: Grupo Sanguineo
+        message: Mensaje
       answer:
-        user_name: "Nombre"
-        blood_group: "Grupo Sanguineo"
-        email: "Correo electrónico"
+        user_name: Nombre
+        blood_group: Grupo Sanguineo
+        email: Correo electrónico
+      user:
+        email: Correo electrónico
+        password: Contraseña
+        password_confirmation: Confirmar contraseña
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"

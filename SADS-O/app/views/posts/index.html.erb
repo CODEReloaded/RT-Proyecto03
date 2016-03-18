@@ -24,10 +24,10 @@
               <%= link_to 'Inicio', root_path, class:"nav-link" %>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Ingresa</a>
+              <%= link_to 'Ingresa', new_user_session_path, class:"nav-link" %>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Registrate</a>
+              <%= link_to 'Registrate', new_user_registration_path, class:"nav-link" %>
             </li>
             <li class="nav-item">
               <%= link_to 'Publica', new_post_path, class:"nav-link" %>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "posts#index"
+  devise_for :users, controllers: { sessions: "users/sessions", registrations: 'users/registrations' }, path: "/", path_names: { sign_in: 'ingresar', password: 'contraseña', sign_out: 'salir', registration: 'registro', sign_up: 'registrarme' } 
   devise_scope :posts do
     #get    "/iniciar_sesion"    => "users/sessions#new",         as: :new_user_session
     #post   "/iniciar_sesion"    => "users/sessions#create",      as: :user_session
@@ -16,7 +17,12 @@ Rails.application.routes.draw do
 
     get "grafica"                 => "grafica#index", as: :grafica
 
+    get "usuario"             => "user#index", as:  :user
+    get "usuario/mis_publicaciones"             => "user#my_posts", as:  :my_posts
+    get '/salir'        => "users/sessions#destroy", as:  :cerrar
+
   end
+
   resources :answers
   resources :posts
   # The priority is based upon order of creation: first created -> highest priority.

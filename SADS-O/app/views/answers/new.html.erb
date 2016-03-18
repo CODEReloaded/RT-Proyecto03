@@ -20,15 +20,27 @@
         <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
           <a class="navbar-brand" href="#"><h2 class="text-muted">Sistema Administrador de Donaciones de Sangre</h2></a>
           <ul class="nav navbar-nav pull-xs-right">
+            <% if current_user %>
+            <li class="nav-item">
+              <%= link_to 'Inicio', user_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Mis publicaciones', my_posts_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Salir', destroy_user_session_path, :method => 'delete', class:'nav-link'%>
+            </li>
+            <% else %>
             <li class="nav-item">
               <%= link_to 'Inicio', root_path, class:"nav-link" %>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Ingresa</a>
+            <li class="nav-item active">
+              <%= link_to 'Ingresa', new_user_session_path, class:"nav-link" %>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Registrate</a>
+              <%= link_to 'Registrate', new_user_registration_path, class:"nav-link" %>
             </li>
+            <% end %>
             <li class="nav-item active">
               <%= link_to 'Publica', new_post_path, class:"nav-link" %>
             </li>
