@@ -7,12 +7,14 @@ class AnswersController < ApplicationController
     @answers = Answer.all
   end
 
+  # Metodo utilizado para una respuesta especifica
   # GET /answers/1
   # GET /answers/1.json
   def show
     @answer = Answer.find(params[:answer_id])
   end
 
+  # Método utilizado para crear respuesta de un post con url compuesta
   # GET /answers/new
   def new
     @post = Post.friendly.find(params[:id])
@@ -20,6 +22,7 @@ class AnswersController < ApplicationController
     @answer.post_id = @post.id
   end
 
+  # Método utilizado
   # GET /answers/1/edit
   def edit
   end
@@ -31,6 +34,7 @@ class AnswersController < ApplicationController
     @answer = Answer.new(answer_params)
     respond_to do |format|
       if @answer.save
+        # Redireccionamos a la publicación como indicamos en el diagrama de navegación
         format.html { redirect_to post_path(Post.find(answer_params[:post_id]).slug),
                    notice: 'Respuesta Creada correctamente.' }
         format.json { render :show, status: :created, location: @answer }
@@ -41,11 +45,13 @@ class AnswersController < ApplicationController
     end
   end
 
+  # Método utilizado
   # PATCH/PUT /answers/1
   # PATCH/PUT /answers/1.json
   def update
     respond_to do |format|
       if @answer.update(answer_params)
+        # Redireccionamos a la publicación como indicamos en el diagrama de navegación
         format.html { redirect_to show_post_path(Post.find(answer_params[:post_id]).slug),
                    notice: 'Respuesta Actualizada correctamente.' }
         format.json { render :show, status: :ok, location: @answer }

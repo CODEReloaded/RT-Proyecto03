@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:destroy]
 
+  # Método utilizado como página principal
   # GET /posts
   # GET /posts.json
   def index
@@ -10,6 +11,7 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  # Método utilizado para mostrar una publicacion usando slug (riendly_id) como parametro
   # GET /posts/1
   # GET /posts/1.json
   def show
@@ -17,16 +19,19 @@ class PostsController < ApplicationController
     @answers = Answer.where(post_id: @post.id)
   end
 
+  # Método utilizado
   # GET /posts/new
   def new
     @post = Post.new
   end
 
+  # Método utilizado
   # GET /posts/1/edit
   def edit
     @post = Post.friendly.find(params[:id])
   end
 
+  # Método utilizado
   # POST /posts
   # POST /posts.json
   def create
@@ -45,6 +50,7 @@ class PostsController < ApplicationController
     end
   end
 
+  # Método utilizado
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
