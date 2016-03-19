@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :members
   #devise_for :usuarios
   #get "/registro"  =>  "usuarios#new",  as:  :registration_path
-
+  devise_for :members,:controllers => { :registrations =>'registration'}
   root "posts#index"
   devise_scope :posts do
     #get    "/iniciar_sesion"    => "login#log",         as: :new_user_session
