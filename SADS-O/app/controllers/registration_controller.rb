@@ -1,4 +1,4 @@
-class RegistrationController < Devise::RegistrationController
+class RegistrationController < Devise::RegistrationsController
 	def new
 	@member=Member.new
 	end
@@ -6,7 +6,7 @@ class RegistrationController < Devise::RegistrationController
 
 	def create
 	@member = Member.new
-    @member.username = params[:member][:name]
+    @member.name = params[:member][:name]
     @member.email = params[:member][:email]
     @member.password = params[:member][:password]
     @member.password_confirmation =params[:member][:password_confirmation]
