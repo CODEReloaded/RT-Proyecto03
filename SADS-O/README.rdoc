@@ -1,3 +1,11 @@
+#Integrantes CODEReloaded
+
+Abrego Alvarez Jonathan
+
+Ascencio Espindola Jorge Eduardo
+
+Marco Antonio Estrada Robles
+
 == README
 
 This README would normally document whatever steps are necessary to get the
