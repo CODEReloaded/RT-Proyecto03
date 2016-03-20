@@ -1,32 +1,73 @@
-<h2>Sign up</h2>
+
+<div class="row">
+        <div class="col-sm-offset-3 col-sm-6" style="text-align:center;">
+          <h1>Registro</h1>
+        </div>
+      </div>
+
+
+<div class="row">
+  <div class="col-sm-offset-1 col-md-offset-2 col-lg-offset-3  col-sm-10 col-md-8 col-lg-6">
+
 
 <%= form_tag(member_registration_path,:method => 'post') %>
 <%= devise_error_messages! %>
-<table>
 
-<tr>
-<td>Username : </td>
-<td><%=text_field_tag "member[name]",@member.name %></td>
-</tr>
 
-<tr>
-<td>Email : </td>
-<td><%=email_field_tag "member[email]",@member.email %></td>
-</tr>
+<div class="form-group row">
+        <label for="post_post_name" class="col-sm-4 form-control-label">Nombre</label>
+        <div class="col-sm-8">
+          <%=text_field_tag "member[name]",@member.name, class:"form-control" %>
+        </div>
+        <div class="col-sm-12">
+          <small class="text-muted">Escribe tu nombre completo</small>
+        </div>
+      </div>
 
-<tr>
-<td>Password : </td>
-<td><%=password_field_tag "member[password]",@member.password %></td>
-</tr>
 
-<tr>
-<td>Retype password : </td>
-<td><%=password_field_tag "member[password_confirmation]",@member.password_confirmation %></td>
-</tr>
+<div class="form-group row">
+        <label for="post_post_name" class="col-sm-4 form-control-label">Email</label>
+        <div class="col-sm-8">
+          <%=email_field_tag "member[email]",@member.email, class:"form-control" %>
+        </div>
+        <div class="col-sm-12">
+          <small class="text-muted">Escribe una direccion de email valida</small>
+        </div>
+      </div>
 
-<tr>
-<td><%= submit_tag nil, :class => "form_submit"%></td>
-</tr>
-</table>
-<br />
-<%= render :partial => "devise/shared/links" %>
+
+
+<div class="form-group row">
+        <label for="post_post_name" class="col-sm-4 form-control-label">Contraseña</label>
+        <div class="col-sm-8">
+          <%=password_field_tag "member[password]",@member.password, class:"form-control" %>
+        </div>
+        <div class="col-sm-12">
+          <small class="text-muted">Escribe una contraseña</small>
+        </div>
+      </div>
+
+
+<div class="form-group row">
+        <label for="post_post_name" class="col-sm-4 form-control-label">Reescribir contraseña</label>
+        <div class="col-sm-8">
+          <%=password_field_tag "member[password_confirmation]",@member.password_confirmation, class:"form-control" %>
+        </div>
+        <div class="col-sm-12">
+          <small class="text-muted">Vuelve a escribir la contraseña para confirmacion</small>
+        </div>
+      </div>
+
+
+<%= submit_tag "Registrarse", class:"btn btn-primary col-sm-offset-5"%>
+<br/>
+
+</div>
+</div>
+<!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
