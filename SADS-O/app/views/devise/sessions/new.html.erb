@@ -1,3 +1,4 @@
+<div class="border-form-div">
 <div class="row">
         <div class="col-sm-offset-3 col-sm-6" style="text-align:center;">
           <h2>Ingresar</h2>
@@ -12,7 +13,7 @@
 
 <div class="form-group row">
         <div class="col-sm-8">
-          <%= f.input :email, required: false, autofocus: true, class:"form-control" %>
+          <%= f.input :email, required: true, autofocus: true, :class => "form-control" %>
         </div>
         <div class="col-sm-12">
           <small class="text-muted">Escribe el email con el que te registraste</small>
@@ -21,7 +22,7 @@
     
 <div class="form-group row">
         <div class="col-sm-8">
-          <%= f.input :password, required: false, class:"form-control" %>
+          <%= f.input :password, required: true, :class => "form-control" %>
         </div>
         <div class="col-sm-12">
           <small class="text-muted">Escribe tu contraseña</small>
@@ -37,4 +38,4 @@
 
 </div>
 </div>
-
+</div>
